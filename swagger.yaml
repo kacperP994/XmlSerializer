@@ -1,0 +1,64 @@
+swagger: "2.0"
+info:
+  description: "Solution of test projest for a candidate. Simple API with two endpoints"
+  version: "1.0.0"
+  title: "Xml Serializer"
+schemes:
+- "http"
+paths:
+  /api/data:
+    post:
+      tags:
+      - "send data"
+      summary: "Send serialized models and store them in a database"
+      description: ""
+      operationId: "addPet"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Pet object that needs to be added to the store"
+        required: true
+        schema:
+          $ref: "#/definitions/RequestModel"
+      responses:
+        400:
+          description: "Invalid ID supplied"
+        404:
+          description: "Pet not found"
+        405:
+          description: "Validation exception"
+          
+
+
+
+
+definitions:
+  RequestModel:
+    type: "object"
+    properties:
+      ix:
+        type: "integer"
+        format: "int32"
+      name:
+        type: "string"
+      visits:
+        type: "integer"
+        nullable: "true"
+        format: "int32"
+        
+      date:
+        type: "string"
+        format: "date-time"
+    xml:
+      name: "RequestModel"
+  
+  
+  
+
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
